@@ -1,4 +1,4 @@
-import type { Activation } from '../domain/activation.entity';
+import type { Activation } from '../entities';
 
 export type CreateActivationParams = {
   promocodeId: string;

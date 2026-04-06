@@ -13,7 +13,7 @@ import {
   CreatePromocodeDto,
   UpdatePromocodeDto,
 } from './dto';
-import { PromocodesService } from './promocodes.service';
+import { PromocodesService } from './app';
 import { ActivationView, PromocodeView } from './views';
 
 @Controller('promocodes')

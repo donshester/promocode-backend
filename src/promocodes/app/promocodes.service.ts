@@ -1,27 +1,27 @@
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { PrismaTransactional } from '../prisma/prisma-transactional.decorator';
-import type { Activation } from './domain/activation.entity';
-import type { Promocode } from './domain/promocode.entity';
-import { ActivatePromocodeDto } from './dto/activate-promocode.dto';
-import { CreatePromocodeDto } from './dto/create-promocode.dto';
-import { UpdatePromocodeDto } from './dto/update-promocode.dto';
+import { PrismaTransactional } from '../../prisma/prisma-transactional.decorator';
+import {
+  Activation,
+  ACTIVATIONS_REPOSITORY,
+  type IActivationsRepository,
+  type IPromocodesRepository,
+  Promocode,
+  PROMOCODES_REPOSITORY,
+  type UpdatePromocodeParams,
+} from '../domain';
+import {
+  ActivatePromocodeDto,
+  CreatePromocodeDto,
+  UpdatePromocodeDto,
+} from '../dto';
 import {
   ActivationDuplicateError,
   ActivationLimitReachedError,
   PromocodeCodeTakenError,
   PromocodeExpiredError,
   PromocodeNotFoundError,
-} from './errors';
-import { isRecordNotFound } from './infra/prisma-errors';
-import {
-  ACTIVATIONS_REPOSITORY,
-  type IActivationsRepository,
-} from './ports/activations.repository.port';
-import {
-  PROMOCODES_REPOSITORY,
-  type IPromocodesRepository,
-  type UpdatePromocodeParams,
-} from './ports/promocodes.repository.port';
+} from '../errors';
+import { isRecordNotFound } from '../infra/prisma-errors';
 
 @Injectable()
 export class PromocodesService {

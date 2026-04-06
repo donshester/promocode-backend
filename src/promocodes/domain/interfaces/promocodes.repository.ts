@@ -1,4 +1,4 @@
-import type { Promocode } from '../domain/promocode.entity';
+import type { Promocode } from '../entities';
 
 export type PromocodeWithActivationCount = {
   readonly promocode: Promocode;

@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma, type Activation as PrismaActivation } from '@prisma/client';
-import { PrismaTransactionContextService } from '../../prisma/prisma-transaction-context.service';
-import { PrismaService } from '../../prisma/prisma.service';
-import { Activation } from '../domain/activation.entity';
-import type {
-  CreateActivationParams,
-  IActivationsRepository,
-} from '../ports/activations.repository.port';
-import { isUniqueConstraintViolation } from './prisma-errors';
+import { PrismaTransactionContextService } from '../../../prisma/prisma-transaction-context.service';
+import { PrismaService } from '../../../prisma/prisma.service';
+import {
+    Activation,
+    type CreateActivationParams,
+    type IActivationsRepository,
+} from '../../domain';
+import { isUniqueConstraintViolation } from '../prisma-errors';
 
 @Injectable()
 export class ActivationsRepository implements IActivationsRepository {

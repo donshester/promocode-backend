@@ -1,15 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma, type Promocode as PrismaPromocode } from '@prisma/client';
-import { PrismaTransactionContextService } from '../../prisma/prisma-transaction-context.service';
-import { PrismaService } from '../../prisma/prisma.service';
-import { Promocode } from '../domain/promocode.entity';
-import type {
-  CreatePromocodeParams,
-  IPromocodesRepository,
-  PromocodeWithActivationCount,
-  UpdatePromocodeParams,
-} from '../ports/promocodes.repository.port';
-import { isUniqueConstraintViolation } from './prisma-errors';
+
+import { PrismaTransactionContextService } from 'src/prisma/prisma-transaction-context.service';
+import { PrismaService } from '../../../prisma/prisma.service';
+import {
+    Promocode,
+    type CreatePromocodeParams,
+    type IPromocodesRepository,
+    type PromocodeWithActivationCount,
+    type UpdatePromocodeParams,
+} from '../../domain';
+import { isUniqueConstraintViolation } from '../prisma-errors';
 
 type PrismaPromocodeWithCount = Prisma.PromocodeGetPayload<{
   include: { _count: { select: { activations: true } } };
